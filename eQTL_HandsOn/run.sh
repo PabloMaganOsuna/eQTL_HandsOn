@@ -293,21 +293,44 @@ wc -l result/ENSG00000099968.13.log
 #rs8141347
 #rs7290691
 #rs1978967
+
 #Q1:  rs8137591	0.37092	0.74184, rs8141347	0.127845	0.25569, rs7290691	0.292331	0.584661, rs1978967	0.206424	0.412848
 awk '$1=="rs8137591"' result/ENSG00000099968.13_post
 awk '$1=="rs8141347"' result/ENSG00000099968.13_post
 awk '$1=="rs7290691"' result/ENSG00000099968.13_post
 awk '$1=="rs1978967"' result/ENSG00000099968.13_post
 #Q2:
+ awk '{print $1, $12, $13}' <(awk '$8=="rs8137591"' <(awk '$1=="ENSG00000099968.13"' result/nominals.txt))
+ ENSG00000099968.13 3.31409e-05 0.169387
+
+ awk '{print $1, $12, $13}' <(awk '$8=="rs8141347"' <(awk '$1=="ENSG00000099968.13"' result/nominals.txt))
+ ENSG00000099968.13 4.23293e-05 0.166362
+
+ awk '{print $1, $12, $13}' <(awk '$8=="rs7290691"' <(awk '$1=="ENSG00000099968.13"' result/nominals.txt))
+ ENSG00000099968.13 0.000378738 -0.186714
+
+ awk '{print $1, $12, $13}' <(awk '$8=="rs1978967"' <(awk '$1=="ENSG00000099968.13"' result/nominals.txt))
+ ENSG00000099968.13 0.000406202 -0.194852
+
  awk '{print $1, $12, $13}' <(awk '$1=="ENSG00000099968.13"' result/nominals.txt)
 #Q3:
-#intron_variant: 38%
-#non_coding_transcript_variant: 26%
-#NMD_transcript_variant: 17%
-#missense_variant: 11%
-#upstream_gene_variant: 4%
-#non_coding_transcript_exon_variant: 2%
-#3_prime_UTR_variant: 2%
+#rs8137591
+intron_variant: 79%
+non_coding_transcript_variant: 14%
+NMD_transcript_variant: 7%
+#rs8141347
+intron_variant: 79%
+non_coding_transcript_variant: 14%
+NMD_transcript_variant: 7%
+#rs7290691
+intron_variant: 75%
+NMD_transcript_variant: 17%
+non_coding_transcript_variant: 8%
+#rs1978967
+intron_variant: 79%
+non_coding_transcript_variant: 14%
+NMD_transcript_variant: 7%
+
                    
 #Task18
 print("Ejecutando Task18")
